@@ -287,14 +287,14 @@ app.get("/random", async (req, res) => {
     let random = null;
     if ( !token ) {
         
-        const todo = await Todo.count().exec(count)
-            random = Math.floor(Math.random()  * count );
-            // Todo.findOne().skip(random).exec(
-            //     function (err, result) {
-            //       console.log(result) 
-            //     }
-            // )
-        ;
+        // const todo = await Todo.count().exec(count)
+        //     random = Math.floor(Math.random()  * count );
+        //     // Todo.findOne().skip(random).exec(
+        //     //     function (err, result) {
+        //     //       console.log(result) 
+        //     //     }
+        //     // )
+        // ;
     }
 
     else{
