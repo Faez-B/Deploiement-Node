@@ -23,7 +23,7 @@ app.use(cors({
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'https://young-mountain-31321.herokuapp.com');
+    res.setHeader('Access-Control-Allow-Origin', 'https://frontend-deploy.github.io');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
