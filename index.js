@@ -17,7 +17,7 @@ const app = express();
 app.use(express.json());
 app.use(cors({
     // exposedHeaders: "x-auth-token",
-    origin: "*",
+    origin: "*"
     // methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     // preflightContinue: true,
     // optionsSuccessStatus: 204
