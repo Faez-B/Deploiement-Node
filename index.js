@@ -15,7 +15,9 @@ const app = express();
 
 // Middlewares
 app.use(express.json());
-app.use(cors())
+app.use(cors({
+    exposedHeaders: "x-auth-token"
+}))
 
 let _id = 1;
 
