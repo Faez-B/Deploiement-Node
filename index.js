@@ -16,14 +16,18 @@ const app = express();
 // Middlewares
 app.use(express.json());
 app.use(cors({
-    exposedHeaders: "x-auth-token"
+    exposedHeaders: "x-auth-token",
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 204
 }))
 
 // Add headers before the routes are defined
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'https://frontend-deploy.github.io');
+    res.setHeader('Access-Control-Allow-Origin', '*');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
