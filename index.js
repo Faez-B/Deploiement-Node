@@ -64,15 +64,15 @@ const Todo = mongoose.model('Todo', todoSchema);
 
 // Connexion à MongoDB
 mongoose.connect(`mongodb+srv://Faez:${process.env.MONGO_PWD}@cluster0.3sely22.mongodb.net/?retryWrites=true&w=majority`)
-.then( async function () {
+.then( function () {
     console.log("Connecté à la BDD");
 
-    let object = await Todo.findById(_id);
+    // let object = await Todo.findById(_id);
 
-    while ( ! (object == null)) {
-        _id = _id + 1;
-        object = await Todo.findById(_id);
-    }
+    // while ( ! (object == null)) {
+    //     _id = _id + 1;
+    //     object = await Todo.findById(_id);
+    // }
 })
 .catch( () => {
     console.log("Non connecté")
@@ -152,8 +152,9 @@ app.post('/signin', async (req, res) => {
     const {error} = joiUserSchema.validate(payload);
 
     if ( ! error) {
-        res.send("OK");
-        // const user = await User.findOne({email : payload.email}).exec()
+        const user = await User.findOne({email : payload.email});
+        user.password = undefined;
+        res.send(user);
         //     .then( async (data) => {
         //         if (data) {
         //                 const passwordIsValid = await bcrypt.compare(payload.password, data.password);
