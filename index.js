@@ -62,11 +62,12 @@ let _id = 1;
 const User = mongoose.model('User', userSchema);
 const Todo = mongoose.model('Todo', todoSchema);
 
+let connected = false;
 // Connexion à MongoDB
 mongoose.connect(`mongodb+srv://Faez:${process.env.MONGO_PWD}@cluster0.3sely22.mongodb.net/?retryWrites=true&w=majority`)
 .then( function () {
     console.log("Connecté à la BDD");
-
+    connected = true;
     // let object = await Todo.findById(_id);
 
     // while ( ! (object == null)) {
@@ -94,7 +95,7 @@ function authGuard(req, res, next) {
 }
 
 app.get('/', (req, res) => {
-    res.status(200).send({ message: "Hello world Node!" });
+    res.status(200).send({ message: "Hello world Node!", connected: connected });
 })
 
 app.get('/moncompte',[authGuard], async (req, res) => {
