@@ -152,24 +152,25 @@ app.post('/signin', async (req, res) => {
     const {error} = joiUserSchema.validate(payload);
 
     if ( ! error) {
-        const user = await User.findOne({email : payload.email}).exec()
-            .then( async (data) => {
-                if (data) {
-                    res.send("OK");
-    //                 const passwordIsValid = await bcrypt.compare(payload.password, data.password);
-    //                 if (passwordIsValid) {
-    //                     token = jwt.sign( {email : data.email, id : data._id}, process.env.JWT);
-    //                     res.header("x-auth-token", token).status(200).send(token);
-    //                 }
-    //                 else {
-    //                     res.send("Mot de passe incorrect");
-    //                 }
+        res.send("OK");
+        // const user = await User.findOne({email : payload.email}).exec()
+        //     .then( async (data) => {
+        //         if (data) {
+        //                 const passwordIsValid = await bcrypt.compare(payload.password, data.password);
+        //                 if (passwordIsValid) {
+        //                     token = jwt.sign( {email : data.email, id : data._id}, process.env.JWT);
+        //                     res.header("x-auth-token", token).status(200).send(token);
+        //                 }
+        //                 else {
+        //                     res.send("Mot de passe incorrect");
+        //                 }
                     
-                }
-                else {
-                    res.send("Ce compte n'existe pas");
-                }
-            })
+        //         }
+        //         else {
+        //             res.send("Ce compte n'existe pas");
+        //         }
+        //     })
+        // ;
     }
 
     else{
