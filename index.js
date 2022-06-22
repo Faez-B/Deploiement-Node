@@ -152,10 +152,10 @@ app.post('/signin', async (req, res) => {
     const {error} = joiUserSchema.validate(payload);
 
     if ( ! error) {
-    //     const user = await User.findOne({email : payload.email})
-    //         .then( async (data) => {
-
-    //             if (data) {
+        const user = await User.findOne({email : payload.email}).exec()
+            .then( async (data) => {
+                if (data) {
+                    res.send("OK");
     //                 const passwordIsValid = await bcrypt.compare(payload.password, data.password);
     //                 if (passwordIsValid) {
     //                     token = jwt.sign( {email : data.email, id : data._id}, process.env.JWT);
@@ -165,22 +165,17 @@ app.post('/signin', async (req, res) => {
     //                     res.send("Mot de passe incorrect");
     //                 }
                     
-    //             }
-    //             else {
-    //                 res.send("Ce compte n'existe pas");
-    //             }
-    //         })
-        res.send("OK");
+                }
+                else {
+                    res.send("Ce compte n'existe pas");
+                }
+            })
     }
 
     else{
-    //     res.status(400).send({ erreur : error.details[0].message });
-        res.send("erreur");
-
+        res.status(400).send({ erreur : error.details[0].message });
+        // res.send("erreur");
     }
-
-    // res.send(payload);
-
 })
 
 app.get('/signout', (req, res) => {
