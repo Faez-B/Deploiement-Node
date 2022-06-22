@@ -149,9 +149,9 @@ app.post('/signup', async (req, res) => {
 app.post('/signin', async (req, res) => {
     const payload = req.body;
 
-    // const {error} = joiUserSchema.validate(payload);
+    const {error} = joiUserSchema.validate(payload);
 
-    // if ( ! error) {
+    if ( ! error) {
     //     const user = await User.findOne({email : payload.email})
     //         .then( async (data) => {
 
@@ -170,11 +170,14 @@ app.post('/signin', async (req, res) => {
     //                 res.send("Ce compte n'existe pas");
     //             }
     //         })
-    // }
+        res.send("OK");
+    }
 
-    // else{
+    else{
     //     res.status(400).send({ erreur : error.details[0].message });
-    // }
+        res.send("erreur");
+
+    }
 
     res.send(payload);
 
