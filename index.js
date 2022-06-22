@@ -14,8 +14,8 @@ const port = process.env.PORT || 8000;
 const app = express();
 
 const corsOptions = {
-    exposedHeaders: "*",
-    origin: "*"
+    origin: true,
+    exposedHeaders: "*"
     // methods: "GET,HEAD,PUT,PATCH,POST,DELETE"
 }
 
