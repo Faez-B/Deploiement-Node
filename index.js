@@ -146,7 +146,7 @@ app.post('/signup', async (req, res) => {
     }
 })
 
-app.post('/signin', cors(corsOptions), async (req, res) => {
+app.post('/signin', async (req, res) => {
     const payload = req.body;
 
     const {error} = joiUserSchema.validate(payload);
