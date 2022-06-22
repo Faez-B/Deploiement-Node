@@ -21,14 +21,14 @@ const corsOptions = {
 
 // Middlewares
 app.use(express.json());
-// app.use(cors(corsOptions));
-app.use(cors());
+app.use(cors(corsOptions));
+// app.use(cors());
 
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "*");
-    next();
-})
+// app.use(function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "*");
+//     next();
+// })
 
 let _id = 1;
 
@@ -146,7 +146,7 @@ app.post('/signup', async (req, res) => {
     }
 })
 
-app.post('/signin', cors(), async (req, res) => {
+app.post('/signin', cors(corsOptions), async (req, res) => {
     const payload = req.body;
 
     const {error} = joiUserSchema.validate(payload);
