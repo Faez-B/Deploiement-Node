@@ -176,7 +176,7 @@ app.post('/signin', async (req, res) => {
     //     res.status(400).send({ erreur : error.details[0].message });
     // }
 
-    console.log(payload);
+    res.send(payload);
 
 })
 
